@@ -1,5 +1,46 @@
+* Leak Source
+
+Transmitting an electromagnetic wave imply to have a conductor driven by a
+(high) frequency source. Various busses are used: monitor cables, PCI buses,
+etc. Here, we use Ethernet interface and cable.
+
+An Ethernet cable consists of 4 twisted pair lines, which carries RF signals
+from 10 to 100 MHz range. Any imperfections in the cable (asymmetry, etc.) or
+in the interface will cause radio signals to be radiated.
+
+Ethernet speeds have different modulation speeds, types and encoding. By
+switching between them, we can modulate the RF signal leaking from the wires.
+
+* Encoding
+
+- 10base-T uses Manchester Encoding with 10MHz symbol rate. This is used as the
+  space signal (logical 0).
+- 100base-T uses 4B5B encoding with NRZI at 125MHz symbol rate. This results in
+  an easy to receive signal around 125MHz, this is used as the mark signal
+  (logical 1).
+- Ethernet transmits an idle sequence when no packets are carried, so the
+  signal is constant. No packets have to be transmitted for the signal to be
+  present, only the speed of the interface has to be changed.
+
+* Prerequisites
+
+We use morse code for simplicity, allowing to judge the signal to noise ratio
+by just listening. It is possible to decode it by ear, otherwise there is a lot
+of software that can do it -- although usually with much worse performance than
+an experienced human operator.
+  
+Transmission is implemented via very simple shell scripts. Only bash, ethtool
+and ping is needed.
+
 * Etherify 4
 
+Changing the interface speed take about about 2-5 seconds with most
+hardware. This is unacceptable for sending regular morse code. Radio-amateurs
+have an answer to this: QRSS CW (CW is morse code in ham radio speak). In QRSS
+CW, the symbol length is increased to a few seconds or more, and the morse code
+is decoded by eye from a slow spectrogram or by ear.
+
+Steps:
 1. Connect the computer (here, a Lenovo Thinkpad T460) to a router or another
    computer with an Ethernet cable -- an Ethernet link must be negotiated and
    established to 100 or 1000 mbps.

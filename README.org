@@ -5,8 +5,9 @@ Transmitting an electromagnetic wave imply to have a conductor driven by a
 etc. Here, we use Ethernet interface and cable.
 
 An Ethernet cable consists of 4 twisted pair lines, which carries RF signals
-from 10 to 100 MHz range. Any imperfections in the cable (asymmetry, etc.) or
-in the interface will cause radio signals to be radiated.
+from 10 to 100 MHz range. Any imperfections in the cable (e.g. bending), in the
+interface connector (e.g. impedance mismatch), or in the power supply
+(e.g. common grounding) will cause radio signals to be radiated.
 
 Ethernet speeds have different modulation speeds, types and encoding. By
 switching between them, we can modulate the RF signal leaking from the wires.

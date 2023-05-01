@@ -77,7 +77,7 @@ calibrate() {
 	TXBEGIN=$EPOCHREALTIME
 	wait_linkdetected
 	TXEND=$EPOCHREALTIME
-	LINKDELAY=`echo -e "scale=5\n${TXEND}-${TXBEGIN}"| bc -l`
+	LINKDELAY=$(echo -e "scale=5\n${TXEND//,/.}-${TXBEGIN//,/.}"| bc -l)
 }
 
 
@@ -103,7 +103,7 @@ find_ethernet_device() {
 	for i in /sys/class/net/*
 	do
 		j=`basename $i`
-		ethtool $j | grep Duplex >/dev/null && echo $j && return
+		ethtool $j | grep "Duplex: Full" >/dev/null && echo $j && return
 	done
 	echo "No suitable ethernet device found"
 	exit 1
@@ -111,7 +111,7 @@ find_ethernet_device() {
 
 find_prerequisites() {
 	while [ "$1" ]; do
-		which "$1" >/dev/null && shift && continue
+		command -v "$1" >/dev/null && shift && continue
 		echo "ERROR: $1 not found, please install it"
 		exit 1
 	done

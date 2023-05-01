@@ -28,7 +28,7 @@ We use morse code for simplicity, allowing to judge the signal to noise ratio
 by just listening. It is possible to decode it by ear, otherwise there is a lot
 of software that can do it -- although usually with much worse performance than
 an experienced human operator.
-  
+
 Transmission is implemented via very simple shell scripts. Only bash, ethtool
 and ping is needed.
 
@@ -44,7 +44,9 @@ Steps:
 1. Connect the computer (here, a Lenovo Thinkpad T460) to a router or another
    computer with an Ethernet cable -- an Ethernet link must be negotiated and
    established to 100 or 1000 mbps.
-2. Manually identify the leak. Tune around 125 MHz (or harmonics of 250 MHz,
+2. Connect the SDR to the computer and place the antenna close (between 5 and
+   10 cm) to the Ethernet cable.
+3. Manually identify the leak. Tune around 125 MHz (or harmonics of 250 MHz,
    375 MHz etc.) with 250 KS of sample rate with GQRX and change the Ethernet
    connection speed between 10 and 100 mbps:
    #+begin_src bash
@@ -57,7 +59,7 @@ Steps:
    #+end_src
    #+CAPTION: Signal emitted at 125 MHz with an Ethernet link to 10 mbps
    [[file:imgs/10mbps.png]]
-3. Use GQRX to hear the morse code of =wisec= (i.e. =.-- .. ... . -.-.=), using
+4. Use GQRX to hear the morse code of =wisec= (i.e. =.-- .. ... . -.-.=), using
    =CW-U= demodulation in the =Mode= selector of the =Receiver Options= panel,
    while running Etherify:
    #+begin_src bash

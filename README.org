@@ -13,10 +13,10 @@ switching between them, we can modulate the RF signal leaking from the wires.
 
 * Encoding
 
-- 10base-T uses Manchester Encoding with 10MHz symbol rate. This is used as the
-  space signal (logical 0).
-- 100base-T uses 4B5B encoding with NRZI at 125MHz symbol rate. This results in
-  an easy to receive signal around 125MHz, this is used as the mark signal
+- 10BASE-T uses Manchester Encoding with 10 MHz symbol rate. This is used as
+  the space signal (logical 0).
+- 100BASE-T uses 4B5B encoding with NRZI at 125 MHz symbol rate. This results
+  in an easy to receive signal around 125MHz, this is used as the mark signal
   (logical 1).
 - Ethernet transmits an idle sequence when no packets are carried, so the
   signal is constant. No packets have to be transmitted for the signal to be
